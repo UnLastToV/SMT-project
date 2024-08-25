@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">เขียนใบแจ้งความ</h1>
+  <div class="btn-toolbar mb-2 mb-md 0">
+    <div class="btn-group me-2">
+      <button class="btn btn-sm btn-outline-secondary">?</button>
+    </div>
+  </div>
+</div>
+
+<div class="col py-3">
+  <div class="row">
+    <div class="col">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">รายการใบสั่ง</a></li>
+          <li class="breadcrumb-item active">เพิ่ม</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col text-end fw-lighter">
+      <b>OfficerID</b>
+    </div>
+  </div>
+
+</div>
+
+
+<form action="/add" method="POST">
+
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="firstName">ชื่อ</label>
+      <input type="text" class="form-control" id="firstName" name="firstName" value="" placeholder="" required>
+    </div>
+
+    <div class="col">
+      <label for="lastName">นามสกุล</label>
+      <input type="text" class="form-control" id="lastName" name="lastName" value="" placeholder="" required>
+    </div>
+  </div>
+
+  <div class="row form-group mb-4">
+    <div class="col">
+      <label for="tel">เบอร์โทร</label>
+      <input type="text" class="form-control" id="tel" name="tel" value="" placeholder="" required>
+    </div>
+
+    <div class="col">
+      <label for="number">เลขที่ใบสั่ง</label>
+      <input type="text" class="form-control" id="number" name="number" value="" placeholder="" required>
+    </div>
+
+    <div class="col">
+      <label for="number">สถานะ</label>
+      <input type="text" class="form-control" id="status" name="status" value="" placeholder="" required>
+    </div>
+  </div>
+
+
+  <div class="form-group mb-4">
+      <label for="details">รายละเอียด</label>
+      <textarea class="form-control" name="details" id="details" cols="30" rows="12" placeholder="เขียนรายละเอียด"></textarea>
+  </div>
+
+  <div class="form-group mb-4">
+    <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
+  </div>
+
+  
+
+</form>
