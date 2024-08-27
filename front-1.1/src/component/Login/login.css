@@ -25,6 +25,8 @@
   color: #1665c0;
   font-family: "Roboto", sans-serif;
   font-weight: bold; 
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .login-box {
   background-color: #ffffff;
@@ -65,7 +67,7 @@
 }
 .input-group label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 1rem;
 }
 .input-group input {
   width: 100%;

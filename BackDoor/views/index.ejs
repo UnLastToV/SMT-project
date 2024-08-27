@@ -1,20 +1,18 @@
 <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Dashboard</h1>
+  <h1 class="h2">รายการใบสั่ง</h1>
   <div class="btn-toolbar mb-2 mb-md 0">
     <div class="btn-group me-2">
-      <a href="/add" class="btn btn-sm btn-outline-secondary">+ เพิ่ม</a>
+      <a href="/add" class="btn btn-sm btn-outline-primary">+ เพิ่ม</a>
     </div>
   </div>
 </div>
 
 <% messages.forEach(element => { %>
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
+  <div class="alert alert-success alert alert-danger alert-dismissible fade show" role="alert">
     <%= element %>
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   </div>
 <% }) %>
-
-
 
 <div class="table-responsive">
 
@@ -22,9 +20,11 @@
     <thead>
       <tr>
         <th scope="col">เลขที่ใบสั่ง</th>
+        <th scope="col">เลขบัตรประชาชน</th>
         <th scope="col">ชื่อ</th>
         <th scope="col">นามสกุล</th>
-        <th scope="col">เบอร์โทร</th>
+        <!-- <th scope="col">วันที่</th> -->
+        <th scope="col">ฐานกระทำผิด</th>
         <th scope="col">สถานะ</th>
         <th scope="col" class="text-end">Action</th>
       </tr>
@@ -34,27 +34,29 @@
       <% customers.forEach(element => { %>
         <tr class="align-middle">
           <td><%= element.number %></td>
+          <td><%= element.citizenID %></td>
           <td><%= element.firstName %></td>
           <td><%= element.lastName %></td>
-          <td><%= element.tel %></td>
+          <!-- <td><%= element.updatedAt %></td> -->
+          <td><%= element.breakRule %></td>
           <td><%= element.status %></td>
           <td class="text-end">
 
-            <div class="d-flex flex-row justify-content-end gap-2">
+            <div class="d-flex flex-row justify-content-end">
 
               <a href="/view/<%= element._id %>" type="button" class="btn btn-primary btn-small">
                 <i class="bi bi-eye"></i>
               </a>
 
-              <a href="/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
+              <!-- <a href="/edit/<%= element._id %>" type="button" class="btn btn-warning btn-small">
                 <i class="bi bi-pencil"></i>
-              </a>
+              </a> -->
 
-              <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
+              <!-- <form action="/edit/<%= element._id %>?_method=DELETE" method="POST" class="position-relative">
                 <button type="submit" class="btn btn-danger btn-small">
                   <i class="bi bi-person-x"></i>
                 </button>
-              </form>
+              </form> -->
 
             </div>
 
@@ -73,9 +75,9 @@
     <ul class="pagination justify-content-center mt-5">
 
       <% if (current == 1) { %>
-        <li class="page-item disabled"><a href="#" class="page-link">First</a></li>
+        <li class="page-item disabled"><a href="#" class="page-link">ก่อน</a></li>
       <% } else { %>
-        <li class="page-item"><a href="/?page=1" class="page-link">First</a></li>
+        <li class="page-item"><a href="/?page=1" class="page-link">ก่อน</a></li>
       <% } %>
 
       <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
@@ -95,12 +97,11 @@
       <% } %>
 
       <% if (current == pages) { %>
-        <li class="page-item disabled"><a href="#" class="page-link">Last</a></li>
+        <li class="page-item disabled"><a href="#" class="page-link">ถัดไป</a></li>
       <% } else { %>
-        <li class="page-item"><a href="/?page=<%= pages %>" class="page-link">Last</a></li>
+        <li class="page-item"><a href="/?page=<%= pages %>" class="page-link">ถัดไป</a></li>
       <% } %>
 
     </ul>
   </nav>
 <% } %>
-

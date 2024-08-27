@@ -1,71 +1,146 @@
-<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">เขียนใบแจ้งความ</h1>
-  <div class="btn-toolbar mb-2 mb-md 0">
-    <div class="btn-group me-2">
-      <button class="btn btn-sm btn-outline-secondary">?</button>
-    </div>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="col py-3">
-  <div class="row">
-    <div class="col">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">รายการใบสั่ง</a></li>
-          <li class="breadcrumb-item active">เพิ่ม</li>
-        </ol>
-      </nav>
-    </div>
-    <div class="col text-end fw-lighter">
-      <b>OfficerID</b>
-    </div>
-  </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Citizen Data</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
 
-</div>
-
-
-<form action="/add" method="POST">
-
-  <div class="row form-group mb-4">
-    <div class="col">
-      <label for="firstName">ชื่อ</label>
-      <input type="text" class="form-control" id="firstName" name="firstName" value="" placeholder="" required>
-    </div>
-
-    <div class="col">
-      <label for="lastName">นามสกุล</label>
-      <input type="text" class="form-control" id="lastName" name="lastName" value="" placeholder="" required>
+<body>
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">เขียนใบแจ้งความ</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <button class="btn btn-sm btn-outline-secondary">?</button>
+      </div>
     </div>
   </div>
 
-  <div class="row form-group mb-4">
-    <div class="col">
-      <label for="tel">เบอร์โทร</label>
-      <input type="text" class="form-control" id="tel" name="tel" value="" placeholder="" required>
-    </div>
-
-    <div class="col">
-      <label for="number">เลขที่ใบสั่ง</label>
-      <input type="text" class="form-control" id="number" name="number" value="" placeholder="" required>
-    </div>
-
-    <div class="col">
-      <label for="number">สถานะ</label>
-      <input type="text" class="form-control" id="status" name="status" value="" placeholder="" required>
+  <div class="col py-3">
+    <div class="row">
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">รายการใบสั่ง</a></li>
+            <li class="breadcrumb-item active">เพิ่ม</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col text-end fw-lighter">
+        <!-- <b>OfficerID</b> -->
+      </div>
     </div>
   </div>
 
+  <form action="/add" method="POST">
 
-  <div class="form-group mb-4">
+    <div class="row form-group mb-4">
+      <div class="col">
+        <label for="citizenID">เลขบัตรประชาชน</label>
+        <input type="text" class="form-control input-bold-border" id="citizenID" name="citizenID" placeholder=""
+          required>
+      </div>
+      <div class="col">
+        <label for="firstName">ชื่อ</label>
+        <input type="text" class="form-control input-bold-border" id="firstName" name="firstName" placeholder=""
+          required>
+      </div>
+      <div class="col">
+        <label for="lastName">นามสกุล</label>
+        <input type="text" class="form-control input-bold-border" id="lastName" name="lastName" placeholder="" required>
+      </div>
+    </div>
+
+    <div class="row form-group mb-4">
+      <div class="col">
+        <label for="licenseID">เลขใบขับขี่</label>
+        <input type="text" class="form-control input-bold-border" id="licenseID" name="licenseID" placeholder="" required>
+      </div>
+
+      <div class="col">
+        <label for="cost">ค่าปรับ</label>
+        <input type="text" class="form-control input-bold-border" id="cost" name="cost" placeholder="" required>
+      </div>
+
+      <div class="col">
+        <label for="status">(เลือก) สถานะ</label>
+        <div class="form-check">
+          <div class="form-group">
+            <select class="form-control" id="status" name="status" onchange="updateColor(this)">
+              <option value="ชำระเงินเสร็จสิ้น" data-color="#28a745">ชำระเงินเสร็จสิ้น</option> <!-- สีเขียว -->
+              <option value="ยังไม่ได้ชำระเงิน" data-color="#ffc107">ยังไม่ได้ชำระเงิน</option> <!-- สีเหลือง -->
+              <option value="ยกเลิกใบสั่ง" data-color="#dc3545">ยกเลิกใบสั่ง</option> <!-- สีแดง -->
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row form-group mb-4">
+        <div class="col">
+          <label for="carType">(เลือก) ประเภทรถ</label>
+          <div class="form-group">
+            <select class="form-control" id="carType" name="carType">
+              <option value="รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน (รย.1)">รถยนต์นั่งส่วนบุคคลไม่เกิน 7 คน (รย.1) </option>
+              <option value="รถยนต์นั่งส่วนบุคคลเกิน 7 คน (รย.2)">รถยนต์นั่งส่วนบุคคลเกิน 7 คน (รย.2)</option>
+              <option value="รถยนต์สามล้อส่วนบุคคล (รย.4)">รถยนต์สามล้อส่วนบุคคล (รย.4)</option>
+              <option value="รถจักรยานยนต์ (รย.12)">รถจักรยานยนต์ (รย.12)</option>
+              <option value="รถจักรยานยนต์สาธารณะ (รย.17)">รถจักรยานยนต์สาธารณะ (รย.17)</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="col">
+          <label for="breakRule">(เลือก) ฐานความผิด</label>
+          <div class="form-group">
+            <select class="form-control" id="breakRule" name="breakRule">
+              <option value="การขับรถโดยไม่มีใบอนุญาตขับขี่">การขับรถโดยไม่มีใบอนุญาตขับขี่</option>
+              <option value="การขับรถขณะเมาสุรา">การขับรถขณะเมาสุรา</option>
+              <option value="การฝ่าฝืนสัญญาณไฟจราจร">การฝ่าฝืนสัญญาณไฟจราจร</option>
+              <option value="การขับรถเร็วเกินกว่าที่กฎหมายกำหนด">การขับรถเร็วเกินกว่าที่กฎหมายกำหนด</option>
+              <option value="การใช้โทรศัพท์มือถือขณะขับรถ">การใช้โทรศัพท์มือถือขณะขับรถ</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group mb-4">
       <label for="details">รายละเอียด</label>
-      <textarea class="form-control" name="details" id="details" cols="30" rows="12" placeholder="เขียนรายละเอียด"></textarea>
-  </div>
+      <textarea class="form-control input-bold-border" name="details" id="details" cols="30" rows="12"
+        placeholder="เขียนรายละเอียด"></textarea>
+    </div>
 
-  <div class="form-group mb-4">
-    <button type="submit" class="btn btn-primary">เพิ่มข้อมูล</button>
-  </div>
+    <div class="form-group mb-4">
+      <a href="/" class="btn btn-primary">
+        <i class="bi bi-arrow-left"></i> ย้อนกลับ
+      </a>
+      <button type="submit" class="btn btn-success">เพิ่มข้อมูล</button>
+    </div>
 
-  
+  </form>
+</body>
 
-</form>
+<script>
+
+  function updateColor(selectElement) {
+    var selectedOption = selectElement.options[selectElement.selectedIndex];
+    var color = selectedOption.getAttribute("data-color");
+    selectElement.style.color = color;
+  }
+
+  // เรียกฟังก์ชันนี้ตอนโหลดหน้าเพื่อตั้งค่าสีเริ่มต้น
+  document.addEventListener("DOMContentLoaded", function () {
+    var selectElement = document.getElementById("status");
+    updateColor(selectElement);
+  });
+
+
+</script>
+
+</html>

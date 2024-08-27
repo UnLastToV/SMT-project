@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 const CustomerSchema = new Schema({
+  citizenID: {
+    type: String,
+    required: true
+  },
   firstName: {
     type: String,
     required: true
@@ -10,7 +14,11 @@ const CustomerSchema = new Schema({
     type: String,
     required: true
   },
-  tel: {
+  licenseID: {
+    type: String,
+    required: true
+  },
+  carType: {
     type: String,
     required: true
   },
@@ -18,7 +26,15 @@ const CustomerSchema = new Schema({
     type: String,
     required: true
   },
+  cost: {
+    type: String,
+    required: true
+  },
   status: {
+    type: String,
+    required: true
+  },
+  breakRule: {
     type: String,
     required: true
   },

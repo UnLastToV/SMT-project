@@ -1,81 +1,162 @@
-<div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">ข้อมูลของ : <%= customer.firstName  %> <%= customer.lastName  %></h1>
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="col py-3">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Citizen Detail</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
 
-  <div class="row">
-    <div class="col">
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-          <li class="breadcrumb-item active"><%= customer.firstName  %></li>
-        </ol>
-      </nav>
-    </div>
-    <div class="col text-end fw-lighter">
-      <b>Last Updated <%= new Date(customer.updatedAt).toUTCString() %> </b>
-      <b>UserId:</b> <%= customer._id %>
-    </div>
+<body>
+  <div class="d-flex justify-content-between flex-wrap flex-md nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">ข้อมูลของ : <%= customer.firstName %>
+        <%= customer.lastName %>
+    </h1>
   </div>
 
-</div>
+  <div class="col py-3">
 
-<ul class="list-group">
-
-  <li class="list-group-item"> 
     <div class="row">
-      <div class="col" style="max-width: 140px"> <b>เลขบัตรประชาชน:</b></div>
-      <div class="col"><%= customer.firstName %> <%= customer.lastName %></div>
+      <div class="col">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">รายการใบสั่ง</a></li>
+            <li class="breadcrumb-item active">
+              <%= customer.firstName %>
+                <%= customer.lastName %>
+            </li>
+          </ol>
+        </nav>
+      </div>
+      <div class="col text-end fw-lighter">
+        <b>Last Updated <%= new Date(customer.updatedAt).toUTCString() %> </b>
+        <b>UserId:</b>
+        <%= customer._id %>
+      </div>
     </div>
-  </li>
 
-  <li class="list-group-item"> 
-    <div class="row">
-      <div class="col" style="max-width: 140px"> <b>ขื่อ-นามสกุล:</b></div>
-      <div class="col"><%= customer.firstName %> <%= customer.lastName %></div>
-    </div>
-  </li>
+  </div>
 
-  <li class="list-group-item"> 
-    <div class="row">
-      <div class="col" style="max-width: 140px"> <b>เบอร์โทร:</b></div>
-      <div class="col"><%= customer.tel %></div>
-    </div>
-  </li>
+  <ul class="list-group">
 
-  <li class="list-group-item"> 
-    <div class="row">
-      <div class="col" style="max-width: 140px"> <b>เลขที่ใบสั่ง:</b></div>
-      <div class="col"><%= customer.number %></div>
-    </div>
-  </li>
-  <li class="list-group-item"> 
-    <div class="row">
-      <div class="col" style="max-width: 140px"> <b>สถานะ:</b></div>
-      <div class="col"><%= customer.status %></div>
-    </div>
-  </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>เลขบัตรประชาชน:</b></div>
+        <div class="col">
+          <%= customer.citizenID %>
+        </div>
+      </div>
+    </li>
 
-  <li class="list-group-item"> 
-    <div class="row">
-      <div class="col" style="max-width: 140px"> <b>รายละเอียด:</b></div>
-      <div class="col"><%= customer.details %></div>
-    </div>
-  </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>เลขใบขับขี่:</b></div>
+        <div class="col">
+          <%= customer.licenseID %>
+        </div>
+      </div>
+    </li>
 
-  <li class="list-group-item"> 
-    <div class="row">
-      <div class="col" style="max-width: 140px"> <b>วันที่บันทึก:</b></div>
-      <div class="col"><%= customer.createdAt %></div>
-    </div>
-  </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>ขื่อ-นามสกุล:</b></div>
+        <div class="col">
+          <%= customer.firstName %>
+            <%= customer.lastName %>
+        </div>
+      </div>
+    </li>
 
-  <li class="list-group-item"> 
-    <div class="row">
-      <div class="col" style="max-width: 140px"> <b>วันที่แก้ไขข้อมูล:</b></div>
-      <div class="col"><%= customer.updatedAt %></div>
-    </div>
-  </li>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>เลขที่ใบสั่ง:</b></div>
+        <div class="col">
+          <%= customer.number %>
+        </div>
+      </div>
+    </li>
 
-</ul>
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>ฐานความผิด:</b></div>
+        <div class="col">
+          <%= customer.breakRule %>
+        </div>
+      </div>
+    </li>
+
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>สถานะ:</b></div>
+        <div class="col">
+          <%= customer.status %>
+        </div>
+      </div>
+    </li>
+
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>ค่าปรับ:</b></div>
+        <div class="col">
+          <%= customer.cost %>
+        </div>
+      </div>
+    </li>
+
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px "> <b>ประเภทรถ:</b></div>
+        <div class="col">
+          <%= customer.carType %>
+        </div>
+      </div>
+    </li>
+
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px "> <b>รายละเอียด:</b></div>
+        <div class="col">
+          <%= customer.details %>
+        </div>
+      </div>
+    </li>
+
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>วันที่บันทึก:</b></div>
+        <div class="col">
+          <%= customer.createdAt %>
+        </div>
+      </div>
+    </li>
+
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col" style="max-width: 140px"> <b>วันที่แก้ไขข้อมูล:</b></div>
+        <div class="col">
+          <%= customer.updatedAt %>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="cancel">
+    <form action="/edit/<%= customer._id %>?_method=PUT" method="POST" class="position-relative">
+
+      <a href="/" class="btn btn-primary">
+        <i class="bi bi-arrow-left"></i> ย้อนกลับ
+      </a>
+
+      <button type="submit" class="btn btn-warning">ยกเลิกใบสั่ง</button>
+    </form>
+  </div>
+  </div>
+
+</body>
+
+</html>
